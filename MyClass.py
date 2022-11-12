@@ -2,15 +2,16 @@ class Book:
     """
         Class for book. In these class ther is all function we need to manage a library program
     """
-    def __init__(self,bookTitle:str,bookAuthor:str,bookEdition:str,bookISBN:int,bookID:int) -> None:
-        self.bookTitle: str = bookTitle
-        self.bookAuthor: str = bookAuthor
-        self.bookEdition: str = bookEdition
-        self.bookISBN: int = bookISBN
-        self.bookID: int = bookID
+    def __init__(self,) -> None:
+        self.bookTitle: str = None
+        self.bookAuthor: str = None
+        self.bookEdition: str = None
+        self.bookISBN: int = None
+        self.bookID: int = None
+        self.bookstate: bool = False
     
     def __str__(self) -> str:
-        return self.bookTitle + ";" + self.bookAuthor + ";" + self.bookEdition + ";" + str(self.bookISBN) + ";" + str(self.bookID) + "\n"
+        return self.bookTitle + ";" + self.bookAuthor + ";" + self.bookEdition + ";" + str(self.bookISBN) + ";" + str(self.bookID) + ";" +  str(self.bookstate)+ "\n"
     
     def __repr__(self) -> str:
         return f"The title of book is {self.bookTitle} the author is {self.bookAuthor} and it is part of the edition {self.bookEdition} the ISBN is {self.bookISBN}\n"
@@ -30,6 +31,9 @@ class Book:
     def get_bookID(self)-> int:
         return self.bookID
     
+    def get_state(self):
+        return self.state
+    
     def changeTitle(self,newTitle:str)-> None:
         self.bookTitle = newTitle
         
@@ -41,6 +45,9 @@ class Book:
 
     def changeISBN(self,newISBN:int)-> None:
         self.bookISBN = newISBN
+    
+    def changeState(self)-> None:
+        self.bookstate = not self.bookstate
     
     
 class myFile:
