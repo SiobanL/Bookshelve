@@ -11,10 +11,10 @@ class Book:
         self.bookstate: bool = False
     
     def __str__(self) -> str:
-        return self.bookTitle + ";" + self.bookAuthor + ";" + self.bookEdition + ";" + str(self.bookISBN) + ";" + str(self.bookID) + ";" +  str(self.bookstate)+ "\n"
+        return str(self.bookTitle) + ";" + str(self.bookAuthor) + ";" + str(self.bookEdition) + ";" + str(self.bookISBN) + ";" + str(self.bookID) + ";" +  str(self.bookstate)+ "\n"
     
     def __repr__(self) -> str:
-        return f"The title of book is {self.bookTitle} the author is {self.bookAuthor} and it is part of the edition {self.bookEdition} the ISBN is {self.bookISBN}\n"
+        return f"The title of book is {self.bookTitle} the author is {self.bookAuthor} and it is part of the edition {self.bookEdition} the ISBN is {self.bookISBN} his state is {self.bookstate}\n"
     
     def get_bookTitle(self)-> str:
         return self.bookTitle
@@ -72,7 +72,7 @@ class myFile:
         with open(self.FileName,"r+")as f:
             rlst: list = []
             for line in f:
-                rlst.append(line)
+                rlst.append(line.split(";"))
             f.close()
         return rlst
     
@@ -82,3 +82,9 @@ class myFile:
         else:
             self.createFile()
             return []
+    
+    def modifyLine(self,line:int,item:int):
+        with open(self.FileName,"w+") as f:
+            f.seek(line)
+            f.write(item)
+            f.close()

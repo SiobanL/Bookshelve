@@ -26,7 +26,7 @@ def mainDisplay():
             case "a":
                 cls("cls")
                 addBook()
-                # main()
+                cls("cls")
             case "b":
                 cls("cls")
                 lendBook()
@@ -40,7 +40,6 @@ def mainDisplay():
                 cls("cls")
                 print("Au revoir :)")
                 break
-        books = f.loadToFile()
 
 
 def addBook():
@@ -61,12 +60,19 @@ def addBook():
     print("+----------------------+")
     newBook.bookID = len(books)
     
-    books.append(list(newBook.__str__()))
+    books.append(newBook.__str__().strip(";"))
     f.saveInFile(newBook.__str__())
+    cls("cls")
 
 
 def lendBook():
-    pass
+    print("+--Preter un livre --+")
+    print("|")
+    print("+- ID: ",end="")
+    search = int(input())
+    books[search][5] = newBook.changeState()
+    f.modifyLine(search,newBook.__str__().strip(";"))
+    return
 
 
 def watchBook():
