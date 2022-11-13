@@ -67,7 +67,7 @@ def lendBook():
     currentBook.assignProperty(books[search])
     # good /\
     #      ||
-    print(not(currentBook.get_state()))
+    print(not(currentBook.get_state()),'here')
     print(currentBook.get_state())
     #      ||
     # good \/
