@@ -70,11 +70,18 @@ def lendBook():
     print("|")
     print("+- ID: ",end="")
     search = int(input())
-    books[search][5] = newBook.changeState()
-    f.modifyLine(search,newBook.__str__().strip(";"))
-    return
-
-
+    book = Book()
+    book.bookTitle = books[search][0]
+    book.bookAuthor = books[search][1]
+    book.bookEdition = books[search][2]
+    book.bookISBN = books[search][3]
+    book.bookID = books[search][4]
+    book.bookstate = books[search][5]
+    book.changeState()
+    books[search] = book.__str__().strip(";")
+    f.modifyLine(search,book.__str__().strip(";"))
+    
+    
 def watchBook():
     pass
 

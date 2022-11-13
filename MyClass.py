@@ -84,7 +84,7 @@ class myFile:
             return []
     
     def modifyLine(self,line:int,item:int):
-        with open(self.FileName,"w+") as f:
-            f.seek(line)
-            f.write(item)
-            f.close()
+        f = open(self.FileName,"w+")
+        f.seek(line)
+        f.write(item)
+        f.close()
