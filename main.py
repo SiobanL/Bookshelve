@@ -65,13 +65,16 @@ def lendBook():
     print("+- ID: ",end="")
     search = int(input())
     currentBook.assignProperty(books[search])
+    print(currentBook.bookstate,' here')
     # good /\
     #      ||
-    print(not(currentBook.get_state()),'here')
-    print(currentBook.get_state())
+    if currentBook.bookstate != "In bookshelve":
+        currentBook.bookstate = "Not in bookshelve\n"
     #      ||
     # good \/
+    print(currentBook.bookstate,' bite')
     books[search] = currentBook.__str__().split(";")
+    print(books[search])
     f.modifyLine(search,currentBook.__str__())
 
 

@@ -8,10 +8,10 @@ class Book:
         self.bookEdition: str = None
         self.bookISBN: int = None
         self.bookID: int = None
-        self.bookstate: bool = False
+        self.bookstate: str = "In bookshelve\n"
 
     def __str__(self) -> str:
-        return str(self.bookTitle) + ";" + str(self.bookAuthor) + ";" + str(self.bookEdition) + ";" + str(self.bookISBN) + ";" + str(self.bookID) + ";" +  str(self.bookstate)+ "\n"
+        return str(self.bookTitle) + ";" + str(self.bookAuthor) + ";" + str(self.bookEdition) + ";" + str(self.bookISBN) + ";" + str(self.bookID) + ";" +  str(self.bookstate) #+ "\n"
 
     def __repr__(self) -> str:
         return f"The title of book is {self.bookTitle} the author is {self.bookAuthor} and it is part of the edition {self.bookEdition} the ISBN is {self.bookISBN} his state is {self.bookstate}\n"
@@ -31,7 +31,7 @@ class Book:
     def get_bookID(self)-> int:
         return self.bookID
 
-    def get_state(self):
+    def get_state(self)-> str:
         return self.bookstate
 
     def changeTitle(self,newTitle:str)-> None:
@@ -46,7 +46,10 @@ class Book:
     def changeISBN(self,newISBN:int)-> None:
         self.bookISBN = newISBN
 
-    def assignProperty(self,strProperty:list)->None:
+    def changeSate(self,state: str)-> None:
+        self.bookstate = state
+
+    def assignProperty(self,strProperty:list)-> None:
         self.bookTitle = strProperty[0]
         self.bookAuthor = strProperty[1]
         self.bookEdition = strProperty[2]
@@ -69,7 +72,7 @@ class myFile:
         f.close()
 
     def loadToFile(self)-> list:
-        with open(self.FileName,"r")as f:
+        with open(self.FileName,"r") as f:
             rlst: list = []
             for line in f:
                 rlst.append(line.split(";"))
@@ -91,7 +94,7 @@ class myFile:
         res = res.join(lst)
         return res
 
-    def modifyLine(self,i:int,itemToModify:str):
+    def modifyLine(self,i:int,itemToModify:str)-> None:
         with open(self.FileName,"r+") as f:
             lines = f.readlines()
             lines[i] = itemToModify
