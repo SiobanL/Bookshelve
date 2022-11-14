@@ -8,10 +8,10 @@ class Book:
         self.bookEdition: str = None
         self.bookISBN: int = None
         self.bookID: int = None
-        self.bookstate: str = "In bookshelve\n"
+        self.bookstate: bool = False
 
     def __str__(self) -> str:
-        return str(self.bookTitle) + ";" + str(self.bookAuthor) + ";" + str(self.bookEdition) + ";" + str(self.bookISBN) + ";" + str(self.bookID) + ";" +  str(self.bookstate) #+ "\n"
+        return str(self.bookTitle) + ";" + str(self.bookAuthor) + ";" + str(self.bookEdition) + ";" + str(self.bookISBN) + ";" + str(self.bookID) + ";" +  str(self.bookstate) + "\n"
 
     def __repr__(self) -> str:
         return f"The title of book is {self.bookTitle} the author is {self.bookAuthor} and it is part of the edition {self.bookEdition} the ISBN is {self.bookISBN} his state is {self.bookstate}\n"
@@ -46,8 +46,8 @@ class Book:
     def changeISBN(self,newISBN:int)-> None:
         self.bookISBN = newISBN
 
-    def changeSate(self,state: str)-> None:
-        self.bookstate = state
+    def changeSate(self)-> None:
+        self.bookstate = not self.bookstate
 
     def assignProperty(self,strProperty:list)-> None:
         self.bookTitle = strProperty[0]

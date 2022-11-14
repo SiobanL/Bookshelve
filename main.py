@@ -7,6 +7,8 @@ f = file("Book.si")
 books = f.loadToFile()
 
 def mainDisplay():
+    # writeThreelines()
+    # books = f.loadToFile()
     while True:
         print("+--------------------------+")
         print("|   a: Ajouter un livre    |")
@@ -68,12 +70,11 @@ def lendBook():
     print(currentBook.bookstate,' here')
     # good /\
     #      ||
-    if currentBook.bookstate != "In bookshelve":
-        currentBook.bookstate = "Not in bookshelve\n"
+    currentBook.changeSate()
     #      ||
     # good \/
-    print(currentBook.bookstate,' bite')
     books[search] = currentBook.__str__().split(";")
+    print(currentBook.bookstate,' bite')
     print(books[search])
     f.modifyLine(search,currentBook.__str__())
 
